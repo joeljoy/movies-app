@@ -23,7 +23,7 @@ const customStyles = {
 
 const TabContainer = function(props){
   return(
-    <Typography component="div" style={{padding:0}}>
+    <Typography component="div" style={{padding:0,textAlign:'center'}}>
         {props.children}
     </Typography>
   )
@@ -74,19 +74,20 @@ class Header extends Component{
           contentLabel="login"
           shouldCloseOnOverlayClick={false}
           style={customStyles}>
-          <Tabs value={this.state.value} onChange={this.handleChange}>
+          <Tabs className="tabs" value={this.state.value} onChange={this.handleChange}>
             <Tab label="Login" />
             <Tab label="Register" />
           </Tabs>
           <TabContainer>
             <FormControl>
-              <InputLabel htmlFor="userName">Username</InputLabel>
+              <InputLabel htmlFor="username">Username</InputLabel>
               <Input id="username" type="text"/>
-            </FormControl>
+            </FormControl><br/><br/>
             <FormControl>
               <InputLabel htmlFor="password">Password</InputLabel>
               <Input id="password" type="password"/>
-            </FormControl>
+            </FormControl><br/><br/>
+            <Button variant="contained" color="primary">Login</Button>
           </TabContainer>
         </Modal>
       </div>
