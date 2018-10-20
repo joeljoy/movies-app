@@ -3,12 +3,15 @@ import './Header.css';
 import Button from '@material-ui/core/Button';
 import logo from '../../assets/logo.svg'
 import Modal from 'react-modal';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 class Header extends Component{
   constructor(){
     super();
     this.state ={
       isOpenModel:false,
+      value:0,
     };
   }
 
@@ -21,6 +24,12 @@ class Header extends Component{
   closeModel = ()=>{
     this.setState({
       isOpenModel:false
+    });
+  }
+
+  handleChange = (event,value) => {
+    this.setState({
+      value:value
     });
   }
 
@@ -41,6 +50,10 @@ class Header extends Component{
           ariaHideApp={false}
           contentLabel="login"
           shouldCloseOnOverlayClick={false}>
+          <Tabs value={this.state.value} onChange={this.handleChange}>
+            <Tab label="Login" />
+            <Tab label="Register" />
+          </Tabs>
         </Modal>
       </div>
     )
