@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import PropTypes from 'prop-types';
 
 const customStyles = {
   content : {
@@ -27,6 +28,10 @@ const TabContainer = function(props){
         {props.children}
     </Typography>
   )
+}
+
+TabContainer.propTypes = {
+  children:PropTypes.node.isRequired
 }
 
 class Header extends Component{
@@ -78,17 +83,20 @@ class Header extends Component{
             <Tab label="Login" />
             <Tab label="Register" />
           </Tabs>
-          <TabContainer>
-            <FormControl>
-              <InputLabel htmlFor="username">Username</InputLabel>
-              <Input id="username" type="text"/>
-            </FormControl><br/><br/>
-            <FormControl>
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input id="password" type="password"/>
-            </FormControl><br/><br/>
-            <Button variant="contained" color="primary">Login</Button>
-          </TabContainer>
+          {
+            this.state.value == 0 &&
+            <TabContainer>
+              <FormControl>
+                <InputLabel htmlFor="username">Username</InputLabel>
+                <Input id="username" type="text"/>
+              </FormControl><br/><br/>
+              <FormControl>
+                <InputLabel htmlFor="password">Password</InputLabel>
+                <Input id="password" type="password"/>
+              </FormControl><br/><br/>
+              <Button variant="contained" color="primary">Login</Button>
+            </TabContainer>
+          }
         </Modal>
       </div>
     )
