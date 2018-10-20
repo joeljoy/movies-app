@@ -10,6 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import PropTypes from 'prop-types';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const customStyles = {
   content : {
@@ -40,6 +41,8 @@ class Header extends Component{
     this.state ={
       isOpenModel:false,
       value:0,
+      username:"",
+      usernameTintVisible:"dispNone",
     };
   }
 
@@ -58,6 +61,16 @@ class Header extends Component{
   handleChange = (event,value) => {
     this.setState({
       value:value
+    });
+  }
+
+  loginClickHandler = () => {
+    this.state.username === ""?this.setState({usernameTintVisible:"dispBlock"}):this.setState({usernameTintVisible:"dispNone"})
+  }
+
+  usernameChangeHandler = (e) => {
+    this.setState({
+      username:e.target.value
     });
   }
 
@@ -84,17 +97,20 @@ class Header extends Component{
             <Tab label="Register" />
           </Tabs>
           {
-            this.state.value == 0 &&
+            this.state.value === 0 &&
             <TabContainer>
               <FormControl>
                 <InputLabel htmlFor="username">Username</InputLabel>
-                <Input id="username" type="text"/>
+                <Input id="username" type="text" username={this.state.username} onChange={this.usernameChangeHandler}/>
+                <FormHelperText className={this.state.usernameTintVisible}>
+                  <span className="red">required</span>
+                </FormHelperText>
               </FormControl><br/><br/>
               <FormControl>
                 <InputLabel htmlFor="password">Password</InputLabel>
                 <Input id="password" type="password"/>
               </FormControl><br/><br/>
-              <Button variant="contained" color="primary">Login</Button>
+              <Button onClick={this.loginClickHandler} variant="contained" color="primary">Login</Button>
             </TabContainer>
           }
         </Modal>
