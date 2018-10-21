@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import './Home.css';
 import Header from '../../common/header/Header'
 import { withStyles } from '@material-ui/core/styles';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import MovieData from '../../assets/movieData';
 
 const styles = theme => ({
    root: {
@@ -17,7 +21,7 @@ const styles = theme => ({
    gridListUpcomingMovies: {
        flexWrap: 'nowrap',
        transform: 'translateZ(0)',
-       width: '100%'
+       width: '100%',
    }
 });
 
@@ -30,6 +34,18 @@ class Home extends Component{
         <div className={classes.upcomingMoviesHeading}>
           <span>Upcoming Movies</span>
         </div>
+        <GridList cols={5} className={classes.gridListUpcomingMovies}>
+          {
+            MovieData.map(function(movie){
+              return(
+                <GridListTile key={movie.id}>
+                  <img className="movie-poster" src={movie.poster_url} alt={movie.title}/>
+                  <GridListTileBar title={movie.title}/>
+                </GridListTile>
+              );
+            })
+          }
+        </GridList>
       </div>
     );
   }

@@ -1,6 +1,21 @@
-.upcoming-banner{
-  background-color: #ff9999;
-  text-align:center;
-  padding-top: 5px;
-  padding-bottom: 5px;
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+.movie-poster {
+    height: 100%;
+    width: auto;
 }
