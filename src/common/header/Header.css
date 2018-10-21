@@ -26,3 +26,7 @@
 .dispBlock{
   display: block;
 }
+.bookshow-button {
+    float: right;
+    margin-right: 8px;
+}
